@@ -12,6 +12,23 @@
 
 volatile bool timer_isr_flag = 0;
 
+// This demo will toggle LEDs colors so we define them here
+#ifdef metal_led_ld0red
+struct metal_led led0_red = metal_led_ld0red;
+#else
+struct metal_led led0_red = metal_led_none;
+#endif
+#ifdef metal_led_ld0blue
+struct metal_led led0_blue = metal_led_ld0blue;
+#else
+struct metal_led led0_blue = metal_led_none;
+#endif
+#ifdef metal_led_ld0green
+struct metal_led led0_green = metal_led_ld0green;
+#else
+struct metal_led led0_green = metal_led_none;
+#endif
+
 void display_banner (void) {
 
     printf("\n");
@@ -82,11 +99,6 @@ void wait_for_timer(struct metal_led led) {
 
 int main (void)
 {
-    // This demo will toggle LEDs colors so we define them here
-    struct metal_led led0_red = metal_led_get_rgb("LD0", "red");
-    struct metal_led led0_green = metal_led_get_rgb("LD0", "green");
-    struct metal_led led0_blue = metal_led_get_rgb("LD0", "blue");
-
     // Enable each LED
     metal_led_enable(led0_red);
     metal_led_enable(led0_green);
