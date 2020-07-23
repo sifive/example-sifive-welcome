@@ -67,7 +67,7 @@ void metal_riscv_cpu_intc_mtip_handler() {
     struct metal_cpu cpu = metal_cpu_get(metal_cpu_get_current_hartid());
 
     // Disable Timer interrupt
-    metal_cpu_disable_timer_interrupt(cpu);
+    metal_cpu_disable_timer_interrupt();
 
     // Flag showing we hit timer isr
     timer_isr_flag = 1;
@@ -86,7 +86,7 @@ void wait_for_timer(struct metal_led led) {
     metal_cpu_set_mtimecmp(cpu, metal_cpu_get_mtime(cpu) + RTC_FREQ);
 
     // Enable Timer interrupt
-    metal_cpu_enable_timer_interrupt(cpu);
+    metal_cpu_enable_timer_interrupt();
 
     // wait till timer triggers and isr is hit
     while (timer_isr_flag == 0){};
@@ -111,7 +111,7 @@ int main (void)
 
     // Lets get the CPU and and its interrupt
     struct metal_cpu cpu = metal_cpu_get(metal_cpu_get_current_hartid());
-    metal_cpu_enable_interrupts(cpu);
+    metal_cpu_enable_interrupts();
 
     // display welcome banner
     display_banner();
