@@ -64,8 +64,6 @@ void display_banner (void) {
 }
 
 void metal_riscv_cpu_intc_mtip_handler() {
-    struct metal_cpu cpu = metal_cpu_get(metal_cpu_get_current_hartid());
-
     // Disable Timer interrupt
     metal_cpu_disable_timer_interrupt();
 
@@ -109,8 +107,6 @@ int main (void)
     metal_led_off(led0_green);
     metal_led_off(led0_blue);
 
-    // Lets get the CPU and and its interrupt
-    struct metal_cpu cpu = metal_cpu_get(metal_cpu_get_current_hartid());
     metal_cpu_enable_interrupts();
 
     // display welcome banner
