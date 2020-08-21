@@ -14,19 +14,19 @@ volatile bool timer_isr_flag = 0;
 
 // This demo will toggle LEDs colors so we define them here
 #ifdef metal_led_ld0red
-struct metal_led led0_red = metal_led_ld0red;
+#define led0_red metal_led_ld0red
 #else
-struct metal_led led0_red = metal_led_none;
+#define led0_red metal_led_none
 #endif
 #ifdef metal_led_ld0blue
-struct metal_led led0_blue = metal_led_ld0blue;
+#define led0_blue metal_led_ld0blue
 #else
-struct metal_led led0_blue = metal_led_none;
+#define led0_blue metal_led_none
 #endif
 #ifdef metal_led_ld0green
-struct metal_led led0_green = metal_led_ld0green;
+#define led0_green metal_led_ld0green
 #else
-struct metal_led led0_green = metal_led_none;
+#define led0_green metal_led_none
 #endif
 
 void display_banner (void) {
